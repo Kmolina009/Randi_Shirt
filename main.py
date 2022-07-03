@@ -106,6 +106,7 @@ def user_decisions(selection):
         print("Adding entry!")
         shirt_entry = input("Add Entry: ") 
         add_entry(shirt_entry)
+# ---------Will involve a selection function------------
     elif selection=="update an item":
         print("Updating entry!")
         update_entry()
@@ -121,7 +122,8 @@ def user_decisions(selection):
     terminal_menu()
 
 # ---------------Session Data Selector---------------
-def select_entry_in_session_data():
+def select_entry_in_session_data(selected_entry):
+    print(selected_entry)
     pass
     # return options[selection]
 def terminal_menu():
