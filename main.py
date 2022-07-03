@@ -26,7 +26,6 @@ class Shirt:
 #         "name":"The Lumbo-Jack"
 #     }
 # }
-print(data1)
 # session_data="Hello"
 # with open("./data_file.json","w") as test_file:
 #     json.dump(data1, test_file)
@@ -51,6 +50,7 @@ def display_shirts_file_in_terminal():
         return data
         # return sess
 #  ************************ -Session Data- *****************************************************
+# TODO - Convert Session Data into an object that can hold a list, and a formatting for presenting it in the terimnal, keep it simple
 try:
     session_data = display_shirts_file_in_terminal()
 except:
@@ -93,31 +93,42 @@ update_entry(json_string)
 # print(session_data[0])
 # Kee
 
-# TODO Work out the controls for this program 
 # -------------------------------------------------------------------------------------------------------------------------------
 
 # Controls - Interactive part of program that allows for the CRUD Operations of the program
 def user_decisions(selection):
     selection=selection.lower()
     print(selection)
-    if selection=="see inventory" or "inventory":
+    if selection=="see inventory":
         print("Getting Inventory")
-        display_shirts_file_in_terminal()
+        print(session_data)
     elif selection=="add an item":
-        print( "Adding an Item!\n " )
-    elif selection=="update an item \n ":
-        print( "Updating an Item!\n " )
+        print("Adding entry!")
+        shirt_entry = input("Add Entry: ") 
+        add_entry(shirt_entry)
+    elif selection=="update an item":
+        print("Updating entry!")
+        update_entry()
     elif selection=="delete an item":
-        print( "Deleting an Item!\n " )
+        print("Deleting entry!")
+        remove_entry()
+        # ♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦ Exit Function♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦
+    elif selection=="exit":
+        print("quitting")
+        return "quit" #Quits the function
     else:
         print("\nUnfortunately that is not an option. \n\n  ¯\_(ツ)_/¯ \n\n")
     terminal_menu()
-     
+
+# ---------------Session Data Selector---------------
+def select_entry_in_session_data():
+    pass
     # return options[selection]
 def terminal_menu():
     print("Main Menu")
-    print(" + See Inventory \n + Add an Item \n + Update an Item \n + Delete an Item")
+    print(" + See Inventory \n + Add an Item \n + Update an Item \n + Delete an Item\n + Exit")
     user_input = input("Select an option: ")
     user_decisions(user_input)
 
-# terminal_menu()
+# Test
+terminal_menu()
