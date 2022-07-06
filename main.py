@@ -90,8 +90,12 @@ def update_entry(entry):
 json_string = json.dumps(session_data,default=obj_to_dict)
 update_entry(json_string)
 # print(session_data)
-# print(session_data[0])
-# Kee
+def select_entry_by_name(entry_name):
+    # compare entry_name to iterated conditional
+    for entry in session_data:
+        if entry["name"] == entry_name:
+            print("Match Found")
+        
 
 # -------------------------------------------------------------------------------------------------------------------------------
 
@@ -108,11 +112,17 @@ def user_decisions(selection):
         add_entry(shirt_entry)
 # ---------Will involve a selection function------------
     elif selection=="update an item":
+        # Take entry
+        entry_to_update = input("Which entry would you like to update?")
         print("Updating entry!")
-        update_entry()
+        select_entry_by_name(entry_to_update)
+        # Pass to function that checks entry
+        print(session_data)
     elif selection=="delete an item":
+        entry_to_delete = input("Which entry would you like to update?")
         print("Deleting entry!")
-        remove_entry()
+        remove_entry() # Take entry as a parameter
+        # Remove Function take an entry - checks the session_data list for a matching name -> Removes match
         # ♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦ Exit Function♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦
     elif selection=="exit":
         print("quitting")
@@ -120,8 +130,10 @@ def user_decisions(selection):
     else:
         print("\nUnfortunately that is not an option. \n\n  ¯\_(ツ)_/¯ \n\n")
     terminal_menu()
-
+    
+# entry_in_session = session_data
 # ---------------Session Data Selector---------------
+
 def select_entry_in_session_data(selected_entry):
     print(selected_entry)
     pass
