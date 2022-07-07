@@ -8,39 +8,15 @@ class Shirt:
     def __init__(self,index,name):
         self.index = index
         self.name = name
-    # def __repr__(self):
-    #     return f"index: {self.index} \n Name: {self.name}"
     def __str__(self):
         return str(self.__dict__)
     def __repr__(self):
         return str(self.__dict__)
     pass
-# /------------------------------- Test Data -------------------------------------
-# data1 = {
-#     "shirt_1":{
-#         "index":1,
-#         "name":"The Marshal Lee"
-#     },
-#     "shirt_2":{
-#         "index":2,
-#         "name":"The Lumbo-Jack"
-#     }
-# }
-# session_data="Hello"
-# with open("./data_file.json","w") as test_file:
-#     json.dump(data1, test_file)
-    
-
-# with open("./data_file.json","w") as test_file:
-#     json.dump(data, test_file)
-    
-# with open("./data_file.json","r") as test_file:
-#     print(test_file.read())
 
 # -------------------- Store dictionary's object  -------------------------------------------- 
 def obj_to_dict(obj):
     return obj.__dict__
-
 
 # -------------------- Load and Parse JSON data ------------------------------------------------
 def display_shirts_file_in_terminal():
@@ -48,9 +24,7 @@ def display_shirts_file_in_terminal():
         json_string=json.load(test_file)
         data = json.loads(json_string)
         return data
-        # return sess
 #  ************************ -Session Data- *****************************************************
-# TODO - Convert Session Data into an object that can hold a list, and a formatting for presenting it in the terimnal, keep it simple
 try:
     session_data = display_shirts_file_in_terminal()
 except:
@@ -75,17 +49,9 @@ def update_entry():
 def update_entry(entry):
     with open("./data_file.json","w") as test_file:
         json.dump(entry, test_file)
-        # json.dumps(entry)
-# update_entry(session_data)
 
 # ------------ Convert Session Data -> JSON Data -----------------  
 
-
-# add_entry("The Lumbo-Jack")
-# add_entry("The Marshal Lee")
-# add_entry("Arbo Swamp")
-# add_entry("Midnight Hawaiian")
-# add_entry("Sage Green")
 
 json_string = json.dumps(session_data,default=obj_to_dict)
 update_entry(json_string)
@@ -96,7 +62,8 @@ def select_entry_by_name(entry_name):
         if entry["name"] == entry_name:
             print("Match Found")
         
-
+def select_entry_by_number():
+    pass
 # -------------------------------------------------------------------------------------------------------------------------------
 
 # Controls - Interactive part of program that allows for the CRUD Operations of the program
@@ -115,6 +82,7 @@ def user_decisions(selection):
         # Take entry
         entry_to_update = input("Which entry would you like to update?")
         print("Updating entry!")
+        # Create a function that determines whether a number or string is being passed
         select_entry_by_name(entry_to_update)
         # Pass to function that checks entry
         print(session_data)
@@ -126,18 +94,16 @@ def user_decisions(selection):
         # ♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦ Exit Function♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦
     elif selection=="exit":
         print("quitting")
-        return "quit" #Quits the function
+        return "quit"
     else:
         print("\nUnfortunately that is not an option. \n\n  ¯\_(ツ)_/¯ \n\n")
     terminal_menu()
     
-# entry_in_session = session_data
 # ---------------Session Data Selector---------------
-
 def select_entry_in_session_data(selected_entry):
     print(selected_entry)
     pass
-    # return options[selection]
+
 def terminal_menu():
     print("Main Menu")
     print(" + See Inventory \n + Add an Item \n + Update an Item \n + Delete an Item\n + Exit")
