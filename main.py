@@ -32,7 +32,6 @@ except:
 #  ************************ CRUD Functions *****************************************************
 # ----------- Create new entry ------------------
 def add_entry(shirt):
-    # entry = Shirt(shirt,0)
     entry = Shirt(len(session_data)+1,shirt)
     session_data.append(entry)
     pass
@@ -42,8 +41,9 @@ def remove_entry():
     print("Removing Entry")
     pass
 # /---------- Update a Shirt ------------
-def update_entry():
+def update_item(shirt):
     print("Updating Entry")
+    select_entry_by_name(shirt)
     pass
 #Update existing Shirt by overwriting 
 def update_entry(entry):
@@ -81,10 +81,11 @@ def user_decisions(selection):
     elif selection=="update an item":
         # Take entry
         entry_to_update = input("Which entry would you like to update?")
-        print("Updating entry!")
+        print("Updating entry!\n")
         # Create a function that determines whether a number or string is being passed
-        select_entry_by_name(entry_to_update)
-        # Pass to function that checks entry
+        # TODO Have the function retrive the entry for modification
+        print(update_item(entry_to_update))
+        # Pass to function that displays updated entry with the rest
         print(session_data)
     elif selection=="delete an item":
         entry_to_delete = input("Which entry would you like to update?")
