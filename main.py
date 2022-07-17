@@ -65,7 +65,7 @@ def select_entry_by_name(entry_name):
             break
         else:
             print("This item does not exist\n Would you like to add it? ")
-            pass
+            return "" #Break out of function
     print(matched_entry)
     matched_entry["name"]=input("What would you like to change the name of your entry to? ")
     print(matched_entry)
