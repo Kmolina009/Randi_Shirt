@@ -42,7 +42,6 @@ def remove_entry():
     pass
 # /---------- Update a Shirt ------------
 def update_item(shirt):
-    print("Updating Entry")
     select_entry_by_name(shirt)
     pass
 #Update existing Shirt by overwriting 
@@ -55,13 +54,23 @@ def update_entry(entry):
 
 json_string = json.dumps(session_data,default=obj_to_dict)
 update_entry(json_string)
-# print(session_data)
+
+# ------------ Entry Selection Control -----------------
 def select_entry_by_name(entry_name):
-    # compare entry_name to iterated conditional
+    matched_entry = ""
     for entry in session_data:
         if entry["name"] == entry_name:
-            print("Match Found")
-        
+            print("Item Found!")
+            matched_entry = entry
+            break
+        else:
+            print("This item does not exist\n Would you like to add it? ")
+            pass
+    print(matched_entry)
+    matched_entry["name"]=input("What would you like to change the name of your entry to? ")
+    print(matched_entry)
+    pass
+
 def select_entry_by_number():
     pass
 # -------------------------------------------------------------------------------------------------------------------------------
@@ -79,12 +88,11 @@ def user_decisions(selection):
         add_entry(shirt_entry)
 # ---------Will involve a selection function------------
     elif selection=="update an item":
-        # Take entry
         entry_to_update = input("Which entry would you like to update?")
         print("Updating entry!\n")
         # Create a function that determines whether a number or string is being passed
         # TODO Have the function retrive the entry for modification
-        print(update_item(entry_to_update))
+        update_item(entry_to_update)
         # Pass to function that displays updated entry with the rest
         print(session_data)
     elif selection=="delete an item":
@@ -94,8 +102,8 @@ def user_decisions(selection):
         # Remove Function take an entry - checks the session_data list for a matching name -> Removes match
         # ♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦ Exit Function♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦♦
     elif selection=="exit":
-        print("quitting")
-        return "quit"
+        print("Exiting")
+        return "Exit Successful"
     else:
         print("\nUnfortunately that is not an option. \n\n  ¯\_(ツ)_/¯ \n\n")
     terminal_menu()
