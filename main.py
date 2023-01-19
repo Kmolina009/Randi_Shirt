@@ -39,9 +39,13 @@ def add_entry(shirt):
 # /---------- Remove a Shirt ------------
 def remove_entry():
     print("Removing Entry")
+    # Works Similar to update item but will remove 
     pass
 # /---------- Update a Shirt ------------
 def update_item(shirt):
+    # TODO - try having the function below return a match, 
+    # except when there is no match
+    # return value of function call will be assigned
     select_entry_by_name(shirt)
     pass
 #Update existing Shirt by overwriting 
@@ -66,12 +70,7 @@ def select_entry_by_name(entry_name):
         else:
             print("This item does not exist\n Would you like to add it? ")
             return "" #Break out of function
-    print(matched_entry)
     matched_entry["name"]=input("What would you like to change the name of your entry to? ")
-    print(matched_entry)
-    pass
-
-def select_entry_by_number():
     pass
 # -------------------------------------------------------------------------------------------------------------------------------
 
@@ -89,9 +88,8 @@ def user_decisions(selection):
 # ---------Will involve a selection function------------
     elif selection=="update an item":
         entry_to_update = input("Which entry would you like to update?")
+        print(session_data)
         print("Updating entry!\n")
-        # Create a function that determines whether a number or string is being passed
-        # TODO Have the function retrive the entry for modification
         update_item(entry_to_update)
         # Pass to function that displays updated entry with the rest
         print(session_data)
